@@ -9,6 +9,17 @@ import 'package:polymer_elements/paper_input.dart';
 import 'package:polymer/polymer.dart';
 import 'package:web_components/web_components.dart';
 
+import 'package:polymer_elements/google_map.dart';
+import 'package:polymer_elements/google_map_directions.dart';
+import 'package:polymer_elements/iron_icons.dart';
+import 'package:polymer_elements/iron_icon.dart';
+import 'package:polymer_elements/paper_item.dart';
+import 'package:polymer_elements/paper_icon_item.dart';
+import 'package:polymer_elements/paper_input.dart';
+import 'package:polymer_elements/paper_card.dart';
+import 'package:polymer_elements/maps_icons.dart';
+import 'package:polymer_elements/paper_tabs.dart';
+
 /// Uses [PaperInput]
 @PolymerRegister('main-app')
 class MainApp extends PolymerElement {
@@ -18,12 +29,15 @@ class MainApp extends PolymerElement {
   /// Constructor used to create instance of MainApp.
   MainApp.created() : super.created();
 
+  @property
+  String travelMode = "DRIVING";
+
   @reflectable
   String reverseText(String text) {
     return text.split('').reversed.join('');
   }
 
-  // Optional lifecycle methods - uncomment if needed.
+// Optional lifecycle methods - uncomment if needed.
 
 //  /// Called when an instance of main-app is inserted into the DOM.
 //  attached() {

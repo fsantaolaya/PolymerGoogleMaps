@@ -8,13 +8,81 @@
     :host {
       display: block;
     }
+
+    paper-card {
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+      z-index: 1;
+    }
+
+    paper-tabs {
+      --paper-tabs-selection-bar-color: #0D47A1;
+      margin-top: 16px;
+    }
+
+    paper-tab {
+      --paper-tab-ink: #BBDEFB;
+    }
+
+    paper-tab iron-icon {
+      margin-right: 10px;
+    }
+
+    paper-tab.iron-selected {
+      background: rgb(66, 133, 244);
+      color: white;
+    }
   </style>
 
   <template>
-    <paper-input label="Type something..." value="{{text}}"></paper-input>
-    <p>
-      Text: <span>{{text}}</span><br />
-      Reversed: <span>{{reverseText(text)}}</span>
-    </p>
+    <google-map-directions map="{{map}}"
+                           start-address="{{start}}"
+                           end-address="{{end}}"
+                           travel-mode="[[travelMode]]"
+                           id="directions"
+                           start-address="Orem"
+                           end-address="SLC">
+    </google-map-directions>
+    <google-map map="{{map}}"
+                disable-default-ui id="g-map"
+                api-key="AIzaSyA6LCpqJHkc8vJOOSlGOeJUOmbq3y-mjLY"
+                latitude="40.2735697"
+                longitude="-111.7154958"
+                zoom="13">
+      <google-map-marker latitude="40.2735697"
+                         longitude="-111.7154958"
+                         title="GDG Utah Dart Meetup&#13;Orem, Utah&#13;USA"
+                         draggable="true">
+      </google-map-marker>
+    </google-map>
+    <paper-card elevation="2">
+      <paper-icon-item tabindex="-1">
+        <iron-icon icon="search" item-icon></iron-icon>
+        <paper-input label="Start address" value="{{start}}"></paper-input>
+      </paper-icon-item>
+      <paper-icon-item tabindex="-1">
+        <iron-icon icon="search" item-icon></iron-icon>
+        <paper-input label="End address" value="{{end}}"></paper-input>
+      </paper-icon-item>
+      <paper-tabs selected="{{travelMode}}" attr-for-selected="label">
+        <paper-tab label="DRIVING">
+          <iron-icon icon="maps:directions-car"></iron-icon>
+          <span>DRIVING</span>
+        </paper-tab>
+        <paper-tab label="WALKING">
+          <iron-icon icon="maps:directions-walk"></iron-icon>
+          <span>WALKING</span>
+        </paper-tab>
+        <paper-tab label="BICYCLING">
+          <iron-icon icon="maps:directions-bike"></iron-icon>
+          <span>BICYCLING</span>
+        </paper-tab>
+        <paper-tab label="TRANSIT">
+          <iron-icon icon="maps:directions-transit"></iron-icon>
+          <span>TRANSIT</span>
+        </paper-tab>
+      </paper-tabs>
+    </paper-card>
   </template>
 </dom-module>
