@@ -32,6 +32,9 @@ class MainApp extends PolymerElement {
   @property
   String travelMode = "DRIVING";
 
+  @property
+  String apiKey = "AIzaSyA6LCpqJHkc8vJOOSlGOeJUOmbq3y-mjLY";
+
   @reflectable
   String reverseText(String text) {
     return text.split('').reversed.join('');
